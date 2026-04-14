@@ -16,7 +16,7 @@ export function isIntergerType(type: string | null): boolean{
     return types.includes(type);
 }
 
-export function integerToByteArray(value,size){
+export function integerToByteArray(value: any,size: any): Buffer{
     // converts given value and size (in bits) into byte array
     
     value = BigInt(value);
@@ -29,7 +29,7 @@ export function integerToByteArray(value,size){
     return new BN(value.toString()).toArrayLike(Buffer, "le", size/8);
 }
 
-export function stringToByteArray(str){
+export function stringToByteArray(str): Buffer{
     // converts string into byte array
     return Buffer.from(str);
 }

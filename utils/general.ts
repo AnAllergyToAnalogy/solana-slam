@@ -6,13 +6,13 @@ import {
 import { integerToByteArray, stringToByteArray } from "./typeFunctions";
 
 
-export function sleep(ms: number) {
+export function sleep(ms: number): Promise<void> {
     // Wait for ms milliseconds
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 
-export async function pdaExists(accountFunc, address){
+export async function pdaExists(accountFunc: Function, address): Promise<Boolean>{
     // Returns true if account exists for given account fetching func and address
     try{
         let acct = await accountFunc(address);
@@ -24,13 +24,13 @@ export async function pdaExists(accountFunc, address){
 
 
 
-export function getPDA(seeds: any[] = [], programId){
+export function getPDA(seeds: any[] = [], programId): PublicKey{
     // returns just PDA address for given a seeds and programID
     return getPDAWithBumps(seeds,programId)[0];
 }
 
 //Generates a PDA key from seeds, can passs pubkeys and strings
-export function getPDAWithBumps(seeds: any[] = [],programId){
+export function getPDAWithBumps(seeds: any[] = [],programId): [PublicKey, number]{
     // Seeds can be a mixed array of publicKeys and strings
     //   Returns the public key of the PDA, and the bumps
 
@@ -77,13 +77,13 @@ export function logAddress(signer: Keypair){
 }
 
 
-export const isSameKey = (key0: PublicKey,key1: PublicKey) => {
+export const isSameKey = (key0: PublicKey,key1: PublicKey): boolean => {
     // returns true if key0 == key1
     return cleanKey(key0) === cleanKey(key1);
 }
 
 
-export function cleanKey(publicKey: PublicKey){
+export function cleanKey(publicKey: PublicKey): string{
     // return public key, cast to string, lowercased
     return publicKey.toString().toLowerCase();
 }

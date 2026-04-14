@@ -1,6 +1,6 @@
 # Utils
 
-> [Main Readme](../../README.md) > [Utils](../utils/UTILS.md) > Case Conversion Functions
+> [Main Readme](../../README.md) > Utils
 
 Various utilities that aid tests but don't do anything Solana / SVM specific.
 
@@ -16,3 +16,6 @@ A few functions for making things easier with randomness.
 
 ### [Type Functions](./TYPE_FUNCTIONS.md)
 Some functions for dealing with @solana/web3.js types. You probably won't use them they're more internally useful in the framework.
+
+### [General](./GENERAL.md) 
+General functions that dont fit in any other category but are useful for Solana tests.

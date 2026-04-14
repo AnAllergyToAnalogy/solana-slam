@@ -8,7 +8,7 @@ import {
 
 
 import { BN, isBN } from "bn.js";
-import { getPDA } from "../utils/utils";
+import { getPDA } from "../utils/general";
 import { getProvider } from "./client";
 import { manuallyAddedAccounts } from "./accounts";
 import { sendTransaction } from "./transaction";
