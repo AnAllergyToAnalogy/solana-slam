@@ -17,9 +17,12 @@ import { integerTypeToSize, isIntergerType } from "../utils/typeFunctions";
 
 
 
+export function createProgram<ProgramType extends Idl>(idl): Helper {
+    const program = initProgram<ProgramType>(idl);
+    return ProgramHelper(program);
+}
 
-
-export function initProgram<ProgramType extends Idl>(idl): Program<ProgramType>{
+function initProgram<ProgramType extends Idl>(idl): Program<ProgramType>{
     return new Program<ProgramType>(idl,getProvider());
 }
 
@@ -43,11 +46,13 @@ export type Helper = {
     id: string,
     ix: { [key: string]: Instruction },
     pda: Function,
+    program: any,
 }
 
 //Returns an object with all the program methods as methods that also send the tx with the current signer
-export function ProgramHelper(program): Helper{
+function ProgramHelper(program): Helper{
     
+    // const program = initProgram<ProgramType>(idl);
 
     const helper: Helper = {
         account: {},
@@ -55,7 +60,8 @@ export function ProgramHelper(program): Helper{
         ix: {},
         pda: function(seeds: any[]){
             return getPDA(seeds, helper.id);
-        }
+        },
+        program,
 
     };
 

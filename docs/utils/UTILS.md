@@ -2,7 +2,7 @@
 
 > [Main Readme](../../README.md) > Utils
 
-Various utilities that aid tests but don't do anything Solana / SVM specific.
+Various utilities that aid tests but mostly don't do anything Solana / SVM specific.
 
 ### [Assertion](./ASSERTION.md)
 
