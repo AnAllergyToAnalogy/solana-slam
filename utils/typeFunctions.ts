@@ -4,7 +4,8 @@ export function integerTypeToSize(type: string): string{
     // Returns number of bits for provided integer type string
     return type.substring(1);
 }
-export function isIntergerType(type): boolean{
+export function isIntergerType(type: string | null): boolean{
+    if(!type) return false;
     // Boolean, returns true if type is an integer type
     const types = ["isize","usize"];
     for(let i = 0; i < 8; i++){

@@ -21,3 +21,16 @@ export function snakeToCamel(name: string): string{
     }
     return params.join("");
 }
+
+export function pascalToCamel(name: string): string{
+    return name.substring(0,1).toLowerCase()+name.substring(1);
+}
+export function camelToPascal(name: string): string{
+    return name.substring(0,1).toUpperCase()+name.substring(1);
+}
+export function snakeToPascal(name: string): string{
+    return camelToPascal(snakeToCamel(name));
+}
+export function pascalToSnake(name: string): string{
+    return camelToSnake(pascalToCamel(name))
+}

@@ -1,4 +1,4 @@
-export function RBInt(min: any,max: any ){
+export function RBInt(min,max): bigint{
     // Random bigInt between min and max
 
     min = BigInt(min);
@@ -24,11 +24,11 @@ export function RBInt(min: any,max: any ){
 
 
 
-export function RArray(array: any[]){
+export function RArray(array: any[]): any{
     // Returns a random element from array
     return array[Math.floor(Math.random() * array.length)];
 }
-export function Chance(pr: number){
+export function Chance(pr: number): boolean{
     // Randomly returns true with probability of true being pr
     return Math.random() < pr;
 }

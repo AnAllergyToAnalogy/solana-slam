@@ -2,7 +2,7 @@ import { assert } from "chai";
 
 import anchorErrors from "../errors/anchorErrors.json";
 
-export const fails = async (attempt,message = "") => {
+export const fails = async (attempt: Function,message: string | object = "") => {
     // Causes test to fail if given function does not fail.
     //  With message as failure message
 
@@ -29,7 +29,7 @@ function getCodeFromErrorLabel(label){
     return null;
 }
 
-export const failsWithCode = async(attempt,reason) => {
+export const failsWithCode = async(attempt: Function,reason: string) => {
     // Causes test to fail if given function does not fail with the specific error code (Anchor error, hex)
 
     reason = reason.trim();
@@ -52,7 +52,7 @@ export const failsWithCode = async(attempt,reason) => {
     assert.equal(success,false,"Did not fail");
     assert.equal(correctMsg,true,"NOT CODE: "+reason+" | "+code);
 }
-export const failsCorrectly = async (attempt,reason) => {
+export const failsCorrectly = async (attempt: Function,reason: string) => {
     // Causes test to fail if given function does not fail with the program-defined error
 
     reason = reason.trim();
@@ -78,7 +78,7 @@ export const failsCorrectly = async (attempt,reason) => {
     assert.equal(success,false,"Did not fail");
     assert.equal(correctMsg,true,"NOT MSG: "+reason+" | "+msg);
 }
-export const succeeds = async(attempt,showError = false, message = "") =>{
+export const succeeds = async(attempt: Function,showError: boolean = false, message: string | object = "") =>{
     // Causes test to fail if the given funciton fails, will only log the error if showError is true. Fails with error message `message`
 
     if(typeof message === "object"){
@@ -96,7 +96,7 @@ export const succeeds = async(attempt,showError = false, message = "") =>{
 
 
 
-export const assertDifference = (before, after, property,difference) => {
+export const assertDifference = (before, after, property: string,difference) => {
     // Fails if 
     assert.notEqual(after[property],  before[property],  "not equal: "+property);
     assert.equal(   after[property],  before[property] + difference, "equal: "+property);
