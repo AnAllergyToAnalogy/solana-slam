@@ -13,6 +13,7 @@ import { getProvider } from "./client";
 import { manuallyAddedAccounts } from "./accounts";
 import { sendTransaction } from "./transaction";
 import { integerTypeToSize, isIntergerType } from "../utils/typeFunctions";
+import { getSigner } from "./signers";
 
 
 
@@ -45,6 +46,7 @@ export type Helper = {
     account: { [key: string]: Function },
     id: string,
     ix: { [key: string]: Instruction },
+    tx: { [key: string]: Instruction },
     pda: Function,
     program: any,
 }
@@ -54,18 +56,26 @@ function ProgramHelper(program): Helper{
     
     // const program = initProgram<ProgramType>(idl);
 
+
+    
     const helper: Helper = {
         account: {},
-        id: program._programId,
+        id: '',
         ix: {},
-        pda: function(seeds: any[]){
-            return getPDA(seeds, helper.id);
-        },
-        program,
-
+        tx: {},
+        pda: ()=>{},
+        program: null,
     };
 
-    helper.account = {};
+
+    const account = {};
+    let ix = {};
+    let tx = {};
+    const id = program._programId;
+    const pda = function(seeds: any[]){
+        return getPDA(seeds, id);
+    }
+
 
     // Accounts
     if(program._idl.accounts){
@@ -92,7 +102,7 @@ function ProgramHelper(program): Helper{
             }
 
             
-            helper.account[name] = async function(seedsOrPublicKey: any[] | PublicKey){
+            account[name] = async function(seedsOrPublicKey: any[] | PublicKey){
 
                 let publicKey;
                 if(Array.isArray(seedsOrPublicKey)){
@@ -149,9 +159,6 @@ function ProgramHelper(program): Helper{
         }
     }
 
-    let ix = {};
-
-
     for(let i = 0; i < program._idl.instructions.length; i++){
         const ins = program._idl.instructions[i];
         const name = ins.name;
@@ -166,6 +173,7 @@ function ProgramHelper(program): Helper{
         }
 
         // TX
+        tx[name] = 
         helper[name] = async function(){
             const parsedArgs = [...arguments];
 
@@ -336,7 +344,7 @@ function ProgramHelper(program): Helper{
                     //@ts-ignore
                     if(acct.signer){
                         //@ts-ignore
-                        addedAccounts[acct.name] = activeSigner.publicKey;
+                        addedAccounts[acct.name] = getSigner().publicKey;
                     //@ts-ignore
                     }else if(acct.address){
                         //@ts-ignore
@@ -564,7 +572,7 @@ function ProgramHelper(program): Helper{
                     //@ts-ignore
                     if(acct.signer){
                         //@ts-ignore
-                        addedAccounts[acct.name] = activeSigner.publicKey;
+                        addedAccounts[acct.name] = getSigner().publicKey;
                         //@ts-ignore
                     }else if(acct.address){
                         //@ts-ignore
@@ -593,10 +601,15 @@ function ProgramHelper(program): Helper{
         }
     }
 
+    //Set properties at the end in case they would have been overwritten by tx func name
+
     //@ts-ignore
     helper.ix = ix;
-
-
+    helper.account = account;
+    helper.id = id;
+    helper.tx = tx;
+    helper.pda = pda;
+    helper.program.program;
 
     return helper;
 

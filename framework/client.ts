@@ -7,6 +7,7 @@ import {
   
   } from "@solana/web3.js";
 import { setAdditionalSigners, setSigner } from "./signers";
+import { publicKey } from "@coral-xyz/anchor/dist/cjs/utils";
 
 type LiteSVM = ReturnType<typeof fromWorkspace>
 
@@ -27,8 +28,10 @@ export type ExtraProgram = {
     programId: PublicKey
 }
 
-export function getBalance(address){
-    return getClient().getBalance(address);
+export function getBalance(address: PublicKey): BigInt{
+    const balance =  getClient().getBalance(address);
+    if(!balance) return 0n;
+    return balance;
 }
 
 

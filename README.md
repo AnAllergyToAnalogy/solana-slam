@@ -14,7 +14,7 @@ I'm skeptical that anyone will actually use this but in the event that they do I
 
 ## Environment Setup
 
-To initialise the full SVM environment, fund signer accounts, etc, simply create a LiteSVM client and pass it to the following function:
+To initialise the full LiteSVM environment, fund signer accounts, etc, simply create a LiteSVM client and pass it to the following function:
 
 ```typescript
 initEnvironment(yourLiteSVMClient);
@@ -181,7 +181,7 @@ Full details available in the [Transaction section of the docs](./docs/framework
 ## Contents
 
 ### [Client and Environment](./docs/framework/CLIENT.md)
-dd
+Full details on initialise environment, getting account balance, and retreiving current environment objects.
 
 ### [Program](./docs/framework/PROGRAM.md)
 Full detail on program helper/interface.
