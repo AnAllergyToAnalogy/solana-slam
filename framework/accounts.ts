@@ -1,6 +1,5 @@
 import {
     PublicKey,
-
   } from "@solana/web3.js";
 
 export let manuallyAddedAccounts: { [key: string]: PublicKey } = {};

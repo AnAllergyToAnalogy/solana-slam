@@ -1,6 +1,6 @@
 import { getClient } from "./client";
 
-export function getCurrentTime(){
+export function getCurrentTime(): BigInt{
     const currentClock = getClient().getClock();
     return BigInt(currentClock.unixTimestamp);
 }

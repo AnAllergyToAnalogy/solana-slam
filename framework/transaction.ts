@@ -30,7 +30,6 @@ export async function sendTransaction(instructions: any[] ) {
 
     }else{
 
-
     }
 
     return txResult;

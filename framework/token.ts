@@ -16,7 +16,7 @@ export function getTokenAccount( userAccount: PublicKey, mint: PublicKey, isPda:
     );
     return tokenAccount;
 }
-export function getTokenBalanceOfUser( connection, userAccount: PublicKey, mint: PublicKey, isPda: boolean = false, programId = TOKEN_PROGRAM_ID){
+export function getTokenBalanceOfUser( userAccount: PublicKey, mint: PublicKey, isPda: boolean = false, programId = TOKEN_PROGRAM_ID){
     const tokenAccount = getTokenAccount(userAccount, mint, isPda, programId);
     return getTokenBalance(tokenAccount);
 }
@@ -32,12 +32,27 @@ export function getTokenBalance( tokenAccount: PublicKey) {
         return 0n;
     }
 }
-export function createTokenInterface(connection, options = {
+
+
+type TokenInterface = {
+  mint: PublicKey,
+  tokenProgram: PublicKey,
+  
+  initAccount: Function,
+
+  getAccount: Function,
+  getBalance: Function,
+  getBalanceOfUser: Function,
+  getBalanceOfSigner: Function,
+
+}
+
+export function createTokenInterface(options = {
     mint:       null,
     token2022:  false,
     decimals:   6n,
     supply:     1_000_000_000n,
-  }){
+  }): TokenInterface{
 
     if(!options.token2022) options.token2022 = false;
     if(typeof options.decimals === "undefined") options.decimals = 6n;
@@ -135,11 +150,11 @@ export function createTokenInterface(connection, options = {
     }
     const getBalanceOfUser = (userAccount: PublicKey) =>{
         const isPda = !PublicKey.isOnCurve(userAccount);
-        return getTokenBalanceOfUser( connection, userAccount, mint, isPda, TOKEN_PROGRAM);
+        return getTokenBalanceOfUser( userAccount, mint, isPda, TOKEN_PROGRAM);
     }
     const getBalanceOfSigner = (signer)=>{
         const userAccount = signer.publicKey;
-        return getTokenBalanceOfUser( connection, userAccount, mint, false, TOKEN_PROGRAM);
+        return getTokenBalanceOfUser( userAccount, mint, false, TOKEN_PROGRAM);
     }
     const getBalance = ( tokenAccount: PublicKey) =>{
         return getTokenBalance(tokenAccount);
@@ -158,3 +173,5 @@ export function createTokenInterface(connection, options = {
     }
 
 }
+
+
