@@ -1,5 +1,6 @@
 
 import {Program, Idl, Instruction } from "@coral-xyz/anchor";
+//@ts-ignore
 import anchorErrors from "../errors/anchorErrors.json";
 
 import {
