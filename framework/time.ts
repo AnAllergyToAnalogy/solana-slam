@@ -1,11 +1,11 @@
 import { getClient } from "./client";
 
-export function getCurrentTime(): BigInt{
+export function getCurrentTime(): bigint{
     const currentClock = getClient().getClock();
     return BigInt(currentClock.unixTimestamp);
 }
 
-export function advanceSeconds(seconds){
+export function advanceSeconds(seconds: bigint){
     const currentClock = getClient().getClock();
 
     currentClock.unixTimestamp += seconds;

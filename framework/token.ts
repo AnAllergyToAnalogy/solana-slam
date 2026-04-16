@@ -1,13 +1,14 @@
 import {
     PublicKey,
-    LAMPORTS_PER_SOL
+    LAMPORTS_PER_SOL,
+    Keypair
   } from "@solana/web3.js";
 
 import { ACCOUNT_SIZE, AccountLayout, 
     getAssociatedTokenAddressSync, MINT_SIZE, MintLayout, TOKEN_2022_PROGRAM_ID, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { getClient } from "./client";
 
-export function getTokenAccount( userAccount: PublicKey, mint: PublicKey, isPda: boolean = false, programId = TOKEN_PROGRAM_ID){
+export function getTokenAccount( userAccount: PublicKey, mint: PublicKey, isPda: boolean = false, programId = TOKEN_PROGRAM_ID): PublicKey{
     const tokenAccount = getAssociatedTokenAddressSync(
       mint,
       userAccount,
@@ -16,11 +17,11 @@ export function getTokenAccount( userAccount: PublicKey, mint: PublicKey, isPda:
     );
     return tokenAccount;
 }
-export function getTokenBalanceOfUser( userAccount: PublicKey, mint: PublicKey, isPda: boolean = false, programId = TOKEN_PROGRAM_ID){
+export function getTokenBalanceOfUser( userAccount: PublicKey, mint: PublicKey, isPda: boolean = false, programId = TOKEN_PROGRAM_ID): bigint{
     const tokenAccount = getTokenAccount(userAccount, mint, isPda, programId);
     return getTokenBalance(tokenAccount);
 }
-export function getTokenBalance( tokenAccount: PublicKey) {
+export function getTokenBalance( tokenAccount: PublicKey): bigint{
     try{
         const acct = getClient().getAccount(tokenAccount);
         if(!acct) return 0n;
@@ -34,7 +35,7 @@ export function getTokenBalance( tokenAccount: PublicKey) {
 }
 
 
-type TokenInterface = {
+export type TokenInterface = {
   mint: PublicKey,
   tokenProgram: PublicKey,
   
@@ -44,7 +45,6 @@ type TokenInterface = {
   getBalance: Function,
   getBalanceOfUser: Function,
   getBalanceOfSigner: Function,
-
 }
 
 export function createTokenInterface(options = {
@@ -99,7 +99,7 @@ export function createTokenInterface(options = {
     function initAta(
         owner: PublicKey,
         amount: number = 0
-      ) {
+      ): PublicKey {
         const ataData = Buffer.alloc(ACCOUNT_SIZE);
       
         AccountLayout.encode(
@@ -144,19 +144,19 @@ export function createTokenInterface(options = {
 
     initMint(mint,TOKEN_PROGRAM);    
 
-    const getAccount = (userAccount: PublicKey)=>{
-        const isPda = !PublicKey.isOnCurve(userAccount)
-        return getTokenAccount(userAccount,mint, isPda, TOKEN_PROGRAM);
+    const getAccount = (ownerAddress: PublicKey): PublicKey=>{
+        const isPda = !PublicKey.isOnCurve(ownerAddress)
+        return getTokenAccount(ownerAddress,mint, isPda, TOKEN_PROGRAM);
     }
-    const getBalanceOfUser = (userAccount: PublicKey) =>{
+    const getBalanceOfUser = (userAccount: PublicKey): bigint =>{
         const isPda = !PublicKey.isOnCurve(userAccount);
         return getTokenBalanceOfUser( userAccount, mint, isPda, TOKEN_PROGRAM);
     }
-    const getBalanceOfSigner = (signer)=>{
+    const getBalanceOfSigner = (signer: Keypair): bigint=>{
         const userAccount = signer.publicKey;
         return getTokenBalanceOfUser( userAccount, mint, false, TOKEN_PROGRAM);
     }
-    const getBalance = ( tokenAccount: PublicKey) =>{
+    const getBalance = ( tokenAccount: PublicKey): bigint =>{
         return getTokenBalance(tokenAccount);
     } 
 

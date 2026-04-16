@@ -13,16 +13,13 @@ export function setSigner(signer: Keypair){
 export function setAdditionalSigners(_additionalSigners: Keypair[] = []){
     additionalSigners = _additionalSigners;
 }
-export function getSigner(){
+export function getSigner(): Keypair{
     return activeSigner;
 }
-export function getAdditionalSigners(){
+export function getAdditionalSigners(): Keypair[]{
     return additionalSigners;
 }
-
-
-
-export function generateSignerKeypairs(signerCount = 10){
+export function generateSignerKeypairs(signerCount = 10): Keypair[]{
     let signers: Keypair[] = []
     for(let i = 0; i < signerCount; i++){
         let _signer = Keypair.generate();

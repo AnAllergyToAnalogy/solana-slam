@@ -159,7 +159,7 @@ advanceDays(days);
 
 Note due to limits of LiteSVM, moving backwards in time is not possible. Rather than snapshotting a point in time, I find it easier to just have beforeEach conditions that recreate the same state for each test when needing to test mutually exclusive paths.
 
-LiteSVM very fast so it will only add a few ms to your test run time.
+LiteSVM is very fast so it will only add a few ms to your test run time.
 
 Full details available in the [Time section of the docs](./docs/framework/TIME.md)
 
@@ -183,15 +183,8 @@ Full details on initialise environment, getting account balance, and retreiving 
 ### [Program](./docs/framework/PROGRAM.md)
 Full detail on program helper/interface.
 
-### [Integers](./docs//INTEGERS.md)
-Further detail on dealing with integers
-
-### [Utils](./docs/utils/UTILS.md)
-Various utilities that aid tests but mostly don't do anything Solana / SVM specific.
-
-
 ### [Signers](./docs/framework/SIGNERS.md)
-Easily manage which accounts are signing txs
+Full detail on managing which accounts are signing txs
 
 ### [Accounts](./docs/framework/ACCOUNTS.md)
 Easily manage which accounts get included in txs
@@ -199,10 +192,14 @@ Easily manage which accounts get included in txs
 ### [SPL Tokens](./docs/framework/TOKEN.md)
 Create and manage SPL tokens within your tests.
 
-
 ### [Time Manipulation](./docs/framework/TIME.md)
 Move forward in time.
 
-
-## [Transactions](./docs/framework/TRANSACTION.md)
+### [Transactions](./docs/framework/TRANSACTION.md)
 Sending txs.
+
+### [Integers](./docs//INTEGERS.md)
+Further detail on dealing with integers
+
+### [Utils](./docs/utils/UTILS.md)
+Various utilities that aid tests but mostly don't do anything Solana / SVM specific. Includes funcs for easily catching program-specific and Anchor-specific failure states.

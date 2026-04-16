@@ -11,6 +11,6 @@ export function addAccounts(accts: { [key: string]: PublicKey } = {}){
 export function clearAddedAccounts(){
     manuallyAddedAccounts = {};
 }
-export function getAddedAccounts(){
+export function getAddedAccounts(): { [key: string]: PublicKey }{
     return manuallyAddedAccounts;
 }
