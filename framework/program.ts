@@ -193,7 +193,7 @@ function ProgramHelper(program): Helper{
                     let t = arg.type.array;
                     // It is an array
                     //arg.type.array == [type, length]
-                    let parg: BN[] = [];
+                    let parg: any[] = [];
                     if(integerTypes.includes(t[0])){
                         for(let k = 0; k < t[1]; k++){
                             parg[k] = new BN(parsedArgs[j][k]);
