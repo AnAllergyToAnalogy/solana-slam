@@ -206,5 +206,5 @@ Further detail on dealing with integers
 ### [Utils](./docs/utils/UTILS.md)
 Various utilities that aid tests but mostly don't do anything Solana / SVM specific. Includes funcs for easily catching program-specific and Anchor-specific failure states.
 
-### [Example](./example/tests/slam-example.ts)
-There is an example Anchor repo in [`/example`](./example/), with an example program and tests.
+### Example
+There is an example Anchor repo in `/example`, with an example program and tests.

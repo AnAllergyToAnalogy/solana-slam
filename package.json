@@ -1,6 +1,6 @@
 {
   "name": "solana-slam",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A framework that makes writing tests with Solana, Anchor and Mocha much easier to work with. Uses LiteSVM.",
   "license": "ISC",
   "author": "AnAllergyToAnalogy",
