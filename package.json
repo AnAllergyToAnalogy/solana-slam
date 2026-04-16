@@ -5,7 +5,7 @@
   "license": "ISC",
   "author": "AnAllergyToAnalogy",
   "type": "module",
-  "main": "index.js",
+  "main": "index.ts",
   "dependencies": {
     "@coral-xyz/anchor": "^0.32.1",
     "@solana/spl-token": "^0.4.14",
