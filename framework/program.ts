@@ -609,7 +609,7 @@ function ProgramHelper(program): Helper{
     helper.id = id;
     helper.tx = tx;
     helper.pda = pda;
-    helper.program.program;
+    helper.program = program;
 
     return helper;
 

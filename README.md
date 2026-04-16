@@ -12,6 +12,8 @@ I'm skeptical that anyone will actually use this but in the event that they do I
 
 [Skip to Contents](#contents)
 
+[Skip to Example Tests](./example/tests/slam-example.ts)
+
 ## Environment Setup
 
 To initialise the full LiteSVM environment, fund signer accounts, etc, simply create a LiteSVM client and pass it to the following function:
@@ -203,3 +205,6 @@ Further detail on dealing with integers
 
 ### [Utils](./docs/utils/UTILS.md)
 Various utilities that aid tests but mostly don't do anything Solana / SVM specific. Includes funcs for easily catching program-specific and Anchor-specific failure states.
+
+### [Example](./example/tests/slam-example.ts)
+There is an example Anchor repo in [`/example`](./example/), with an example program and tests.

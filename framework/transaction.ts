@@ -2,8 +2,8 @@ import {
     Transaction,
 } from "@solana/web3.js";
 
-import { getAdditionalSigners, getSigner } from "./signers.js";
-import { getClient } from "./client.js";
+import { getAdditionalSigners, getSigner } from "./signers";
+import { getClient } from "./client";
 
 
 export async function sendTransaction(instructions: any[] ) {
@@ -21,11 +21,15 @@ export async function sendTransaction(instructions: any[] ) {
     const txResult = getClient().sendTransaction(tx);
 
 
+
     //@ts-ignore
     if(txResult.err){
-        
+    
+
         //@ts-ignore
-        const logs = txResult.meta().logs();
+        const meta = txResult.meta();
+        const logs = meta.logs();
+
         throw new Error(logs.toString());
 
     }else{

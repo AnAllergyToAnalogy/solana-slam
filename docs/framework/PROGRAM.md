@@ -76,7 +76,7 @@ It will return an object with the account data if the account exists, or `null` 
 
 ### PDAs
 
-You can get PDAs of the program by using the `pda` function and passing seeds. Atm it can accept strings, public keys, and integers as seeds.
+You can get PDAs of the program by using the `pda` function and passing seeds. Atm it can accept bools, strings, public keys, and integers as seeds.
 
 
 
