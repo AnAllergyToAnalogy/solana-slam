@@ -35,6 +35,8 @@ Or the exact same thing as a sub-property of the `tx` property:
 await myProgram.tx.myFunction(someParam, someOtherParam);
 ```
 
+Where possible, the program will infer account addresses fromthe IDL. But in cases where it can not be inferred, or you want to overwrite any inferred account addresses, use `addAccounts()`.
+
 For info on how to add accounts to txs, see the [Account docs](./ACCOUNTS.md). For info on how to change signers, and add additional signers to your tx, see the [Signers docs](./SIGNERS.md).
 
 
@@ -47,7 +49,11 @@ const ix1 = await myProgram.ix.anotherFunction(aThirdParam);
 await sendTransaction([ix0,ix1]);
 ```
 
+The instruction will process any [added accounts](./ACCOUNTS.md) at the point of funtion invocation, not when the tx is sent. 
+
 For info on the `sendTransaction` function, see the [Transaction docs](./TRANSACTION.md).
+
+
 
 
 ### Account

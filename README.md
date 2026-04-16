@@ -2,7 +2,7 @@
 
 ### **S**olana, **L**iteSVM, **A**nchor, **M**ocha
 
-An extremely opinionated test framework for writing tests in Anchor using LiteSVM and Mocha. I developed this for my own use, but have decided to publish it as the Solan dev ecosystem is generally pretty abysmal and apparently people have issues writing tests with the existing tools, and nobody benefits from poorly tested programs except for blackhats. 
+An extremely opinionated test framework for writing tests in Anchor using LiteSVM and Mocha. I developed this for my own use, but have decided to publish it as the Solana dev ecosystem is generally pretty abysmal and apparently people have issues writing tests with the existing tools, and nobody benefits from poorly tested programs except for blackhats. 
 
 The test framework uses `@solana/web3.js` in stead of `@solana/kit` even though the former is deprecated because this is what is used out of the box with Anchor. 
 
@@ -50,15 +50,12 @@ const ix = await myProgram.ix.myFunction(someParam, someOtherParam);
 // Get the address of a PDA
 const address = await myProgram.pda(["seeds","for","the","pda"]);
 
-//TODO: integer type link here
-
 // Read the value of an account that the program owns
 //    You can either pass the address if you already know it,
 const accountData = await myProgram.account.myAccountType(address);
 
 //    Or you can pass the seeds like in the PDA function
 const accountData = await myProgram.account.myAccountType(["seeds","for","another","pda"]);
-
 ```
 
 Full details available in the [Program section of the docs](./docs/framework/PROGRAM.md)
@@ -194,18 +191,18 @@ Various utilities that aid tests but mostly don't do anything Solana / SVM speci
 
 
 ### [Signers](./docs/framework/SIGNERS.md)
-dd
+Easily manage which accounts are signing txs
 
 ### [Accounts](./docs/framework/ACCOUNTS.md)
-dd
+Easily manage which accounts get included in txs
 
 ### [SPL Tokens](./docs/framework/TOKEN.md)
-dd
+Create and manage SPL tokens within your tests.
 
 
 ### [Time Manipulation](./docs/framework/TIME.md)
-dd
+Move forward in time.
 
 
 ## [Transactions](./docs/framework/TRANSACTION.md)
-dd
+Sending txs.
