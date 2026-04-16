@@ -140,7 +140,6 @@ function ProgramHelper(program): Helper{
                 
             
                 for(let v in val){
-                    // log(v, "::", struct[camelToSnake(v)])
                     if(isBN(val[v]) || ( isIntergerType( getFieldType(v) )  ) ){
                         val[v] = BigInt(val[v].toString());
                     }else if(Array.isArray(val[v])){
