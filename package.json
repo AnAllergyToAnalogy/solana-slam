@@ -1,6 +1,6 @@
 {
   "name": "solana-slam",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A framework that makes writing tests with Solana, Anchor and Mocha much easier to work with. Uses LiteSVM.",
   "license": "ISC",
   "author": "AnAllergyToAnalogy",
@@ -11,8 +11,7 @@
     "@solana/spl-token": "^0.4.14",
     "anchor-litesvm": "^0.2.1",
     "bn.js": "^5.2.3",
-    "chai": "^6.2.2",
-    "solana-slam": "^0.0.2"
+    "chai": "^6.2.2"
   },
   "devDependencies": {
     "@types/bn.js": "^5.2.0"
