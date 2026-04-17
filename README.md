@@ -24,7 +24,7 @@ initEnvironment(yourLiteSVMClient);
 
 For a completely clean slate for each test, this can and should be called before each.
 
-Full detail available in the [Client section of the docs](./docs/framework/CLIENT.md) incuding funding additional signers and adding extra programs to the environment.
+Full detail available in the [Client section of the docs](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/CLIENT.md) incuding funding additional signers and adding extra programs to the environment.
 
 ## Programs
 To create an interface/helper for a program that has been loaded into your anchor tests, use the following:
@@ -60,7 +60,7 @@ const accountData = await myProgram.account.myAccountType(address);
 const accountData = await myProgram.account.myAccountType(["seeds","for","another","pda"]);
 ```
 
-Full details available in the [Program section of the docs](./docs/framework/PROGRAM.md)
+Full details available in the [Program section of the docs](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/PROGRAM.md)
 
 ## Signers
 
@@ -76,7 +76,7 @@ You can add additional signers with
 setAdditionalSigners([additional, signer, keypairs])
 ```
 
-Full details available in the [Signers section of the docs](./docs/framework/SIGNERS.md)
+Full details available in the [Signers section of the docs](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/SIGNERS.md)
 
 ## Accounts
 
@@ -95,7 +95,7 @@ These will be included with any program ix or tx until they are overwritten, or 
 clearAddedAccounts()
 ```
 
-Full details available in the [Accounts section of the docs](./docs/framework/ACCOUNTS.md)
+Full details available in the [Accounts section of the docs](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/ACCOUNTS.md)
 
 ## SPL Tokens
 
@@ -115,7 +115,7 @@ const hisBalance = aToken.getBalance(someGuysTokenAccountAddress);
 const hisBalance = aToken.getBalanceOfUser(someGuysPublicKey);
 ```
 
-Full details available in the [Token section of the docs](./docs/framework/TOKEN.md)
+Full details available in the [Token section of the docs](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/TOKEN.md)
 
 ## Integer types
 
@@ -139,7 +139,7 @@ _example_
 const address = await myProgram.pda(["user",[67n, 32n]]);
 ```
 
-Full details available in the [Integers section of the docs](./docs/INTEGERS.md)
+Full details available in the [Integers section of the docs](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/INTEGERS.md)
 
 
 ## Time Manipulation
@@ -163,7 +163,7 @@ Note due to limits of LiteSVM, moving backwards in time is not possible. Rather 
 
 LiteSVM is very fast so it will only add a few ms to your test run time.
 
-Full details available in the [Time section of the docs](./docs/framework/TIME.md)
+Full details available in the [Time section of the docs](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/TIME.md)
 
 ## Sending Transactions
 The framework provides a function for sending a tx with any `@solana/web3.js` instructions, not just those from programs. It will be signed by the current signer and any additional signers you have provided. 
@@ -173,38 +173,38 @@ The framework provides a function for sending a tx with any `@solana/web3.js` in
 sendTransaction([ix1,ix2, ix2])
 ```
 
-Full details available in the [Transaction section of the docs](./docs/framework/TRANSACTION.md)
+Full details available in the [Transaction section of the docs](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/TRANSACTION.md)
 
 
 
 ## Contents
 
-### [Client and Environment](./docs/framework/CLIENT.md)
+### [Client and Environment](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/CLIENT.md)
 Full details on initialise environment, getting account balance, and retreiving current environment objects.
 
-### [Program](./docs/framework/PROGRAM.md)
+### [Program](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/PROGRAM.md)
 Full detail on program helper/interface.
 
-### [Signers](./docs/framework/SIGNERS.md)
+### [Signers](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/SIGNERS.md)
 Full detail on managing which accounts are signing txs
 
-### [Accounts](./docs/framework/ACCOUNTS.md)
+### [Accounts](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/ACCOUNTS.md)
 Easily manage which accounts get included in txs
 
-### [SPL Tokens](./docs/framework/TOKEN.md)
+### [SPL Tokens](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/TOKEN.md)
 Create and manage SPL tokens within your tests.
 
-### [Time Manipulation](./docs/framework/TIME.md)
+### [Time Manipulation](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/TIME.md)
 Move forward in time.
 
-### [Transactions](./docs/framework/TRANSACTION.md)
+### [Transactions](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/framework/TRANSACTION.md)
 Sending txs.
 
-### [Integers](./docs//INTEGERS.md)
+### [Integers](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/INTEGERS.md)
 Further detail on dealing with integers
 
-### [Utils](./docs/utils/UTILS.md)
+### [Utils](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/docs/utils/UTILS.md)
 Various utilities that aid tests but mostly don't do anything Solana / SVM specific. Includes funcs for easily catching program-specific and Anchor-specific failure states.
 
 ### [Example](https://github.com/AnAllergyToAnalogy/solana-slam/tree/main/example)
-There is an example Anchor repo in `[/example`](https://github.com/AnAllergyToAnalogy/solana-slam/tree/main/example), with an example program and tests.
+There is an example Anchor repo in [`/example`](https://github.com/AnAllergyToAnalogy/solana-slam/tree/main/example), with an example program and tests.
