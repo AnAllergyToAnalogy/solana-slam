@@ -12,7 +12,7 @@ I'm skeptical that anyone will actually use this but in the event that they do I
 
 [Skip to Contents](#contents)
 
-[Skip to Example Tests](./example/tests/slam-example.ts)
+[Skip to Example Tests](https://github.com/AnAllergyToAnalogy/solana-slam/tree/main/example)
 
 ## Environment Setup
 
@@ -206,5 +206,5 @@ Further detail on dealing with integers
 ### [Utils](./docs/utils/UTILS.md)
 Various utilities that aid tests but mostly don't do anything Solana / SVM specific. Includes funcs for easily catching program-specific and Anchor-specific failure states.
 
-### Example
-There is an example Anchor repo in `/example`, with an example program and tests.
+### [Example](https://github.com/AnAllergyToAnalogy/solana-slam/tree/main/example)
+There is an example Anchor repo in `[/example`](https://github.com/AnAllergyToAnalogy/solana-slam/tree/main/example), with an example program and tests.
