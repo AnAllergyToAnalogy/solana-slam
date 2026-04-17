@@ -12,7 +12,7 @@ I'm skeptical that anyone will actually use this but in the event that they do I
 
 [Skip to Contents](#contents)
 
-[Skip to Example Tests](https://github.com/AnAllergyToAnalogy/solana-slam/tree/main/example)
+[Skip to Example Tests](https://github.com/AnAllergyToAnalogy/solana-slam/blob/main/example/tests/slam-example.ts)
 
 ## Environment Setup
 
